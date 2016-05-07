@@ -1,0 +1,17 @@
+.Navigation {
+  margin-left: 20px;
+  display: flex;
+  li {
+    margin-left: 10px;
+    a {
+      color: $main-green;
+      text-decoration: none;
+
+      &.active {
+        text-decoration: underline;
+      }
+
+    }
+  }
+
+}

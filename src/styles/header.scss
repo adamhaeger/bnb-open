@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  padding:20px;
+  //background-color: $main-green;
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  color : white;
+  align-items: center;
+
+
+
+
+
+    a.logo {
+      font-size: 40px;
+      color: #000;
+      text-decoration: none;
+      &:visited{
+        color: #000;
+      }
+    }
+
+    .fat-face {
+      font-family: 'Abril Fatface', cursive;
+    }
+  }
