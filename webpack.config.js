@@ -3,17 +3,23 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval',
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    './src/index'
-  ],
+  entry: process.env.NODE_ENV === 'production' ? [ './src/index' ] :
+      [
+          'webpack-dev-server/client?http://localhost:3000',
+          'webpack/hot/only-dev-server',
+          './src/index'
+      ]
+   ,
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist/static'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
-  plugins: [
+  plugins: process.env.NODE_ENV === 'production' ? [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin()
+  ] : [
     new webpack.HotModuleReplacementPlugin()
   ],
   module: {

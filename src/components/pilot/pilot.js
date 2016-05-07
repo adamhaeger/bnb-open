@@ -10,7 +10,7 @@ export default class Pilot extends React.Component {
     render() {
         return(
             <div>
-                <h1>Hey im the pilot</h1>
+                <h1>Hey im the pilot Modified! Again and agian</h1>
             </div>
         );
     }

@@ -8,6 +8,8 @@ export default class Navigation extends React.Component {
         this.state = {};
     }
 
+
+    
     render() {
         return(
             <ul className="Navigation">

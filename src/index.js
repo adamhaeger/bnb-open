@@ -8,6 +8,8 @@ import Home  from './components/home/home';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 require("./styles/style.scss");
 
+
+
 ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={App}>

@@ -1,15 +1,19 @@
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
+var express = require('express');
+var path = require('path');
+var compression = require('compression');
 
-new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
-  hot: true,
-  historyApiFallback: true
-}).listen(3000, 'localhost', function (err, result) {
-  if (err) {
-    return console.log(err);
-  }
+var app = express();
+app.use(compression());
 
-  console.log('Listening at http://localhost:3000/');
-});
+// serve our static stuff like index.css
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// send all requests to index.html so browserHistory in React Router works
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+})
+
+var PORT = process.env.PORT || 8080;
+app.listen(PORT, function() {
+    console.log('Production Express server running at localhost:' + PORT);
+})
